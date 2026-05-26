@@ -105,15 +105,89 @@ El proyecto se dividirá en dos componentes principales:
 
 ---
 
-## Kernels a explorar
+---
 
-- Kernel lineal
-- Kernel RBF (Gaussiano)
-- Kernel polinomial
+## Resultados finales
+
+Se desarrolló un modelo de clasificación de riesgo de crédito utilizando Máquinas de Soporte Vectorial (SVM), analizando tanto su formulación matemática como su implementación computacional.
+
+Se compararon distintos kernels y estrategias de regularización, obteniendo los siguientes resultados:
+
+| Modelo | Kernel | Accuracy |
+|---|---|---|
+| SVM lineal | Linear | 0.53 |
+| SVM no lineal | RBF | 0.80 |
+| SVM optimizado | RBF + Grid Search | 0.94 |
+
+El modelo final optimizado fue un SVM con kernel RBF utilizando:
+
+$$
+C = 100
+\qquad
+\gamma = 0.1
+$$
+
+obteniendo un desempeño cercano al:
+
+$$
+94\%
+$$
+
+de exactitud sobre el conjunto de prueba.
 
 ---
 
-## Herramientas
+## Visualizaciones desarrolladas
+
+El proyecto incorpora visualizaciones geométricas y matemáticas avanzadas para interpretar el comportamiento del modelo:
+
+- Matrices de confusión
+- Fronteras de decisión
+- Comparación entre kernels
+- Regiones de clasificación
+- Mapas topográficos de optimización
+- Visualización de support vectors
+- Proyecciones PCA en 2D y 3D
+- Superficies geométricas del kernel RBF
+- Interpretación del hiperespacio de decisión
+
+Estas visualizaciones permiten conectar directamente la teoría de optimización convexa con la geometría de clasificación de SVM.
+
+---
+
+## Conceptos matemáticos implementados
+
+Durante el proyecto se desarrollaron e interpretaron:
+
+- Problema primal y dual de SVM
+- Condiciones KKT
+- Multiplicadores de Lagrange
+- Soft Margin SVM
+- Kernel Trick
+- Espacios de Hilbert
+- Maximización del margen
+- Fronteras de decisión no lineales
+- Regularización mediante \(C\)
+- Función de decisión:
+
+$$
+f(x)=\sum_{i=1}^{n}\alpha_i y_i K(x_i,x)+b
+$$
+
+---
+
+## Principales conclusiones
+
+- El kernel lineal presenta limitaciones cuando las clases no son linealmente separables.
+- El kernel RBF mostró el mejor desempeño al capturar relaciones no lineales complejas presentes en los datos financieros.
+- El parámetro \(C\) controla el balance entre margen amplio y penalización de errores.
+- Los support vectors representan las observaciones críticas que determinan la frontera óptima de clasificación.
+- La validación cruzada y el tuning de hiperparámetros fueron fundamentales para mejorar la capacidad de generalización del modelo.
+- Las proyecciones PCA permitieron interpretar geométricamente regiones de decisión en espacios de alta dimensión.
+
+---
+
+## Tecnologías utilizadas
 
 - Python
 - scikit-learn
@@ -121,22 +195,11 @@ El proyecto se dividirá en dos componentes principales:
 - pandas
 - matplotlib
 - seaborn
+- SciPy
 - Jupyter Notebook
 
 ---
 
-## Aplicación esperada
+## Aplicación
 
-Se espera analizar cómo distintos kernels y parámetros de regularización afectan:
-
-- la separación entre clases,
-- la capacidad de generalización,
-- y el desempeño predictivo del modelo en un contexto de riesgo de crédito.
-
----
-
-## Referencias iniciales
-
-- Hastie, Tibshirani & Friedman — *The Elements of Statistical Learning*
-- Bishop — *Pattern Recognition and Machine Learning*
-- scikit-learn documentation
+El proyecto demuestra cómo los métodos de optimización convexa y aprendizaje estadístico pueden utilizarse para resolver problemas reales de clasificación de riesgo de crédito, integrando teoría matemática, geometría computacional y machine learning.
